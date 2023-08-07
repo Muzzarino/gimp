@@ -187,7 +187,7 @@ gimp_operation_layer_mode_blend_cancellation_light_linear (GeglOperation *operat
               gfloat val;
 
               if (layer[c] <= 0.5f)
-                val = in[c] - 2.0f * layer[c] - 1.0f;
+                val = in[c] - 2.0f * layer[c];
               else
                 val = in[c] - 2.0f * (layer[c] - 0.5f);
 
