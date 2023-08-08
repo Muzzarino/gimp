@@ -187,9 +187,9 @@ gimp_operation_layer_mode_blend_cancellation_light_linear (GeglOperation *operat
               gfloat val;
 
               if (layer[c] <= 0.5f)
-                val = in[c] - 2.0f * layer[c];
-              else
                 val = in[c] - 2.0f * (layer[c] - 0.5f);
+              else
+                val = in[c] - 2.0f * layer[c] + 1.0f;
 
               comp[c] = val;
             }
@@ -1118,9 +1118,9 @@ gimp_operation_layer_mode_blend_overlay_A (GeglOperation *operation,
               gfloat val;
 
               if (in[c] < 0.5f)
-                val = (1.0 - in[c]) * (2.0 * layer[c] - 1.0) + in[c];
+                val = 1.0 - 2.0 * (1.0 - in[c]) * (1.0 - layer[c]);
               else
-                val = in[c] * (2.0 * layer[c] - 1.0) + in[c];
+                val = 2.0 * in[c] * layer[c];
 
               comp[c] = val;
             }
